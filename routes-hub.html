@@ -7,17 +7,99 @@
   <meta name="description" content="Browse premium routes worldwide. Search by city or route and request curated Business, First, or Premium Economy options." />
   <meta name="theme-color" content="#0b0a08" />
   <link rel="stylesheet" href="/assets/styles.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"LuxAeris","url":"https://luxaeris.com"}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://luxaeris.com/"},{"@type":"ListItem","position":2,"name":"Routes","item":"https://luxaeris.com/routes-hub.html"}]}</script>
 </head>
 <body>
   <script src="/assets/site.js" defer></script>
-  <main class="wrap" style="padding-top:28px;padding-bottom:28px;">
-    <section class="dir-hero">
-      <div class="kicker">Routes</div>
+
+  <main class="wrap content-wrap" style="padding-bottom:28px;">
+    <section class="dir-hero" aria-label="Routes directory">
+      <div class="kicker">Routes directory</div>
       <h1>Find your route.</h1>
-      <p class="muted" style="max-width:900px;">Browse premium routes worldwide. Search by city or route and request curated Business, First, or Premium Economy options.</p>
+      <p class="muted" style="max-width:900px;">
+        Search by origin, destination, or airport code. Open a route page or request a quote immediately.
+      </p>
+      <div class="dir-tools">
+        <input id="routeSearch" placeholder="Search by city, route, or airport code" autocomplete="off" />
+        <div class="smallnote" id="routeCount">—</div>
+      </div>
+      <div class="pills" id="originPills" style="margin-top:14px;"></div>
+    </section>
+
+    <section class="section">
+      <div class="grid-3" id="routeGrid"></div>
+      <div class="smallnote" id="routeFooter" style="margin-top:12px;"></div>
     </section>
   </main>
+
+  <script>
+  (function(){
+    const grid = document.getElementById("routeGrid");
+    const q = document.getElementById("routeSearch");
+    const count = document.getElementById("routeCount");
+    const footer = document.getElementById("routeFooter");
+    const pills = document.getElementById("originPills");
+    const dataUrl = "/assets/routes_index.json";
+    let activeOrigin = "";
+
+    function esc(s){ return (s||"").replace(/[&<>"]/g, c=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c])); }
+
+    function makePills(origins){
+      const top = origins.slice(0, 16);
+      pills.innerHTML = "";
+      [["All", ""], ...top.map(o=>[o,o])].forEach(([label,val])=>{
+        const el = document.createElement("button");
+        el.className = "pill" + (val===activeOrigin ? " is-active" : "");
+        el.type = "button";
+        el.textContent = label;
+        el.onclick = () => {
+          activeOrigin = (val===activeOrigin ? "" : val);
+          makePills(origins);
+          render(window.__ROUTES || []);
+        };
+        pills.appendChild(el);
+      });
+    }
+
+    function render(all){
+      const term = (q.value||"").trim().toLowerCase();
+      let items = all;
+      if(activeOrigin){
+        items = items.filter(x => (x.o||"") === activeOrigin);
+      }
+      if(term){
+        items = items.filter(x => (x.t||"").toLowerCase().includes(term) || (x.k||"").toLowerCase().includes(term));
+      }
+      const total = items.length;
+      const view = items.slice(0, 60);
+
+      count.textContent = activeOrigin || term ? (total + " matches") : (all.length + " routes");
+      footer.textContent = total > 60 ? "Showing 60 results. Refine the search to narrow the view." : "";
+
+      grid.innerHTML = view.map(x => `
+        <article class="cardx">
+          <img class="cardx__img" src="https://images.unsplash.com/photo-1533371452382-d45a9da51ad9?auto=format&fit=crop&w=1400&q=80" alt="Route" loading="lazy"/>
+          <div class="cardx__bd">
+            <div class="cardx__t">${esc(x.t)}</div>
+            <div class="cardx__m">${esc(x.k)}</div>
+            <div class="cardx__a">
+              <a class="btn btn--primary" href="${esc(x.u)}">Open route</a>
+              <a class="btn" href="/request.html?origin=${encodeURIComponent(x.o)}&destination=${encodeURIComponent(x.d)}&service=Business%20Class">Request quote</a>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    fetch(dataUrl).then(r=>r.json()).then(all=>{
+      window.__ROUTES = all;
+      const origins = [];
+      const seen = new Set();
+      all.forEach(x => { if(x.o && !seen.has(x.o)){ seen.add(x.o); origins.push(x.o); } });
+      makePills(origins);
+      render(all);
+      q.addEventListener("input", ()=>render(all));
+    });
+  })();
+  </script>
 </body>
 </html>

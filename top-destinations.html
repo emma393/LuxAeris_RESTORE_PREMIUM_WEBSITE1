@@ -3,21 +3,48 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Top Destinations | LuxAeris</title>
-  <meta name="description" content="Browse luxury travel destinations and request premium flight options worldwide." />
+  <title>Top Destinations Worldwide | LuxAeris</title>
+  <meta name="description" content="Explore top global destinations for premium cabin travel. Browse by region, see highlights, and request Business Class, First Class, Premium Economy or Private Jet options." />
   <meta name="theme-color" content="#0b0a08" />
   <link rel="stylesheet" href="/assets/styles.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"LuxAeris","url":"https://luxaeris.com"}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://luxaeris.com/"},{"@type":"ListItem","position":2,"name":"Top Destinations","item":"https://luxaeris.com/top-destinations.html"}]}</script>
 </head>
 <body>
   <script src="/assets/site.js" defer></script>
-  <main class="wrap" style="padding-top:28px;padding-bottom:28px;">
-    <section class="dir-hero">
-      <div class="kicker">Top Destinations</div>
-      <h1>Top destinations.</h1>
-      <p class="muted" style="max-width:900px;">Browse luxury travel destinations and request premium flight options worldwide.</p>
+
+  <main class="wrap content-wrap" style="padding-bottom:10px;">
+    <section class="dir-hero" aria-label="Top destinations">
+      <div class="kicker">Browse • Inspire • Request</div>
+      <h1>Top destinations worldwide</h1>
+      <p class="muted" style="max-width:920px;">
+        A curated directory of high‑demand cities and leisure destinations. Filter by region, search by airport code, then request premium cabin options in seconds.
+      </p>
+
+      <div class="dir-tools">
+        <input id="destSearch" placeholder="Search by city, country or airport code (e.g., LHR, DXB, JFK)" autocomplete="off" />
+        <div class="chips" id="regionChips" aria-label="Region filters"></div>
+      </div>
+      <div class="small" style="margin-top:10px;">
+        <span id="destCount">—</span> • Tip: click “Find flights” to open the request form prefilled.
+      </div>
+    </section>
+
+    <section class="dir-grid" id="destGrid" aria-label="Destination directory"></section>
+
+    <section class="section" aria-label="Advertising placements">
+      <h2>Partner placements</h2>
+      <p class="muted">Relevant travel partners can sponsor a tasteful section on this page (lounges, hotels, insurance, transfers).</p>
+      <div class="ad-slot" id="ad-destinations">
+        <div class="ad-title">Advertise on this page</div>
+        <div class="ad-sub">Premium, non-intrusive placements only — aligned to luxury travelers.</div>
+        <div class="ad-actions">
+          <a class="btn btn--primary" href="/advertise.html">View media kit</a>
+          <a class="btn" href="/request.html">Request a quote</a>
+        </div>
+      </div>
     </section>
   </main>
+
+  <script src="/assets/destinations.js" defer></script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Top Destinations Worldwide", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Paris, France"}, {"@type": "ListItem", "position": 2, "name": "London, United Kingdom"}, {"@type": "ListItem", "position": 3, "name": "Rome, Italy"}, {"@type": "ListItem", "position": 4, "name": "Barcelona, Spain"}, {"@type": "ListItem", "position": 5, "name": "Amsterdam, Netherlands"}, {"@type": "ListItem", "position": 6, "name": "Zurich, Switzerland"}, {"@type": "ListItem", "position": 7, "name": "Milan, Italy"}, {"@type": "ListItem", "position": 8, "name": "Istanbul, Türkiye"}, {"@type": "ListItem", "position": 9, "name": "Athens, Greece"}, {"@type": "ListItem", "position": 10, "name": "Lisbon, Portugal"}, {"@type": "ListItem", "position": 11, "name": "Dubai, UAE"}, {"@type": "ListItem", "position": 12, "name": "Abu Dhabi, UAE"}, {"@type": "ListItem", "position": 13, "name": "Doha, Qatar"}, {"@type": "ListItem", "position": 14, "name": "Bangkok, Thailand"}, {"@type": "ListItem", "position": 15, "name": "Hong Kong, China (SAR)"}, {"@type": "ListItem", "position": 16, "name": "Tokyo, Japan"}, {"@type": "ListItem", "position": 17, "name": "Singapore, Singapore"}, {"@type": "ListItem", "position": 18, "name": "Kuala Lumpur, Malaysia"}, {"@type": "ListItem", "position": 19, "name": "Bali, Indonesia"}, {"@type": "ListItem", "position": 20, "name": "New York City, USA"}, {"@type": "ListItem", "position": 21, "name": "Los Angeles, USA"}, {"@type": "ListItem", "position": 22, "name": "Miami, USA"}, {"@type": "ListItem", "position": 23, "name": "Cancún, Mexico"}, {"@type": "ListItem", "position": 24, "name": "Las Vegas, USA"}, {"@type": "ListItem", "position": 25, "name": "Sydney, Australia"}, {"@type": "ListItem", "position": 26, "name": "Melbourne, Australia"}, {"@type": "ListItem", "position": 27, "name": "Maldives, Maldives"}, {"@type": "ListItem", "position": 28, "name": "Santorini, Greece"}, {"@type": "ListItem", "position": 29, "name": "Nice, France"}, {"@type": "ListItem", "position": 30, "name": "Vienna, Austria"}, {"@type": "ListItem", "position": 31, "name": "Prague, Czechia"}]}</script>
 </body>
 </html>
