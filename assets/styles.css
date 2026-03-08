@@ -226,9 +226,9 @@ p{margin:0 0 12px}
 
 /* specific hero backgrounds */
 .bg-home{background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2200&q=80')}
-.bg-business{background-image:url('https://images.unsplash.com/photo-1540339832862-474599807836?auto=format&fit=crop&w=1800&q=80')}
-.bg-first{background-image:url('https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1800&q=80')}
-.bg-private{background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1800&q=80')}
+.bg-business{background-image:url('https://images.unsplash.com/photo-1556388158-158ea5ccacbd?auto=format&fit=crop&w=2000&q=80')}
+.bg-first{background-image:url('https://images.unsplash.com/photo-1540339832862-474599807836?auto=format&fit=crop&w=2000&q=80')}
+.bg-private{background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2000&q=80')}
 
 
 
@@ -316,3 +316,63 @@ p{margin:0 0 12px}
 }
 .origin-nav button.active{background:linear-gradient(135deg,#5a0f1a,#7a1625);border-color:rgba(255,255,255,.12)}
 .route-lead{max-width:940px}
+
+/* Luxury cabin image overrides */
+.bg-business{background-image:url('https://images.unsplash.com/photo-1556388158-158ea5ccacbd?auto=format&fit=crop&w=2000&q=80') !important;}
+.bg-first{background-image:url('https://images.unsplash.com/photo-1540339832862-474599807836?auto=format&fit=crop&w=2000&q=80') !important;}
+.bg-private{background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2000&q=80') !important;}
+
+
+/* ===== Cookie banner ===== */
+.cookie-banner{
+  position:fixed;
+  left:18px;
+  right:18px;
+  bottom:18px;
+  z-index:9999;
+  max-width:980px;
+  margin:0 auto;
+  padding:18px 18px 16px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.10);
+  background:linear-gradient(180deg, rgba(15,13,10,.98), rgba(8,7,6,.99));
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+  color:#f6efe4;
+}
+.cookie-banner__row{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  justify-content:space-between;
+}
+.cookie-banner__text{
+  max-width:720px;
+}
+.cookie-banner__title{
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:rgba(246,239,228,.62);
+  margin-bottom:8px;
+}
+.cookie-banner__copy{
+  color:rgba(246,239,228,.78);
+  line-height:1.7;
+  font-size:14px;
+}
+.cookie-banner__actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:flex-end;
+  min-width:220px;
+}
+.cookie-banner__actions .btn{
+  min-width:132px;
+}
+@media(max-width:760px){
+  .cookie-banner{left:12px;right:12px;bottom:12px;padding:16px}
+  .cookie-banner__row{flex-direction:column}
+  .cookie-banner__actions{justify-content:flex-start;min-width:0}
+}

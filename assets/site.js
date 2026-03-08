@@ -87,3 +87,45 @@
   ensureYear();
   ensureFloatCTA();
 })();
+
+
+(function(){
+  const KEY = "luxaeris_cookie_consent";
+  if(localStorage.getItem(KEY)) return;
+
+  function closeBanner(value){
+    try{ localStorage.setItem(KEY, value); }catch(e){}
+    const el = document.getElementById("cookieBanner");
+    if(el) el.remove();
+  }
+
+  function mountBanner(){
+    if(document.getElementById("cookieBanner")) return;
+    const wrap = document.createElement("div");
+    wrap.id = "cookieBanner";
+    wrap.className = "cookie-banner";
+    wrap.innerHTML = `
+      <div class="cookie-banner__row">
+        <div class="cookie-banner__text">
+          <div class="cookie-banner__title">Cookie notice</div>
+          <div class="cookie-banner__copy">
+            We use cookies and similar technologies to improve site performance, understand traffic, and support your browsing experience. By clicking Accept, you agree to our use of cookies as described in our <a href="/privacy.html">Privacy Policy</a>.
+          </div>
+        </div>
+        <div class="cookie-banner__actions">
+          <button class="btn btn--ghost" id="cookieDecline" type="button">Decline</button>
+          <button class="btn btn--primary" id="cookieAccept" type="button">Accept</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(wrap);
+    document.getElementById("cookieAccept")?.addEventListener("click", ()=>closeBanner("accepted"));
+    document.getElementById("cookieDecline")?.addEventListener("click", ()=>closeBanner("declined"));
+  }
+
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", mountBanner);
+  }else{
+    mountBanner();
+  }
+})();
