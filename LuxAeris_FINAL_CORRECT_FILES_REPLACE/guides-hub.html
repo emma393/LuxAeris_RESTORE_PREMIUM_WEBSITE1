@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guides | LuxAeris</title>
+  <meta name="description" content="Luxury travel guides to help you plan premium trips: best time to visit, things to do, airport guides, and premium hotel tips." />
+  <meta name="theme-color" content="#0b0a08" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <script src="/assets/site.js" defer></script>
+
+  <main class="wrap content-wrap" style="padding-bottom:28px;">
+    <section class="dir-hero" aria-label="Guides directory">
+      <div class="kicker">Travel guides</div>
+      <h1>Plan with more clarity.</h1>
+      <p class="muted" style="max-width:900px;">
+        Explore premium travel guides designed to support high-quality booking decisions.
+      </p>
+      <div class="dir-tools">
+        <input id="guideSearch" placeholder="Search by destination or guide topic" autocomplete="off" />
+        <div class="smallnote" id="guideCount">—</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid-3" id="guideGrid"></div>
+      <div class="smallnote" id="guideFooter" style="margin-top:12px;"></div>
+    </section>
+  </main>
+
+  <script>
+  (function(){
+    const grid = document.getElementById("guideGrid");
+    const q = document.getElementById("guideSearch");
+    const count = document.getElementById("guideCount");
+    const footer = document.getElementById("guideFooter");
+    const dataUrl = "/assets/guides_index.json";
+
+    function esc(s){ return (s||"").replace(/[&<>"]/g, c=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c])); }
+
+    function render(all){
+      const term = (q.value||"").trim().toLowerCase();
+      let items = all;
+      if(term){
+        items = items.filter(x => (x.t||"").toLowerCase().includes(term) || (x.k||"").toLowerCase().includes(term));
+      }
+      const total = items.length;
+      const view = items.slice(0, 60);
+      count.textContent = term ? (total + " matches") : (all.length + " guides");
+      footer.textContent = total > 60 ? "Showing 60 results. Refine the search to narrow the view." : "";
+
+      grid.innerHTML = view.map(x => `
+        <article class="cardx">
+          <img class="cardx__img" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1400&q=80" alt="Guide" loading="lazy"/>
+          <div class="cardx__bd">
+            <div class="cardx__t">${esc(x.t)}</div>
+            <div class="cardx__m">${esc(x.k)}</div>
+            <div class="cardx__a">
+              <a class="btn btn--primary" href="${esc(x.u)}">Open guide</a>
+              <a class="btn" href="/request.html?destination=${encodeURIComponent(x.d)}">Find flights</a>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    fetch(dataUrl).then(r=>r.json()).then(all=>{
+      render(all);
+      q.addEventListener("input", ()=>render(all));
+    });
+  })();
+  </script>
+</body>
+</html>
