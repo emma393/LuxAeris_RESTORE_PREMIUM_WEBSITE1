@@ -1,1 +1,82 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Request a Quote | LuxAeris</title><link rel="stylesheet" href="assets/css/styles.css"/><link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg"/></head><body><script src="assets/js/site.js" defer></script><main class="wrap" style="padding-top:24px"><section class="dir-hero"><div class="kicker">Private, premium, curated</div><h1 style="font-family:Georgia,serif;font-size:54px;margin:10px 0 0">Request premium flight options.</h1><p class="muted">Share the essentials and we'll follow up with curated options aligned to your dates, cabin preference, flexibility, and pace of travel.</p></section><section class="section quote-shell"><div class="form-card"><div class="form-card__hd"><div class="kicker">Step one</div><h2 style="margin-top:6px;font-family:Georgia,serif;font-size:40px">Tell us what you need.</h2></div><div class="form-card__bd"><form><div class="form-grid"><div><label>Cabin / Service *</label><select><option>Business Class</option><option>First Class</option><option>Premium Economy</option><option>Private Jet Charter</option></select></div><div><label>Estimated budget *</label><input placeholder="$3,000–$6,000"></div><div><label>Origin *</label><input placeholder="New York (JFK)"></div><div><label>Destination *</label><input placeholder="London (LHR)"></div><div><label>Departure date *</label><input type="date"></div><div><label>Return date</label><input type="date"></div><div><label>Full name *</label><input placeholder="Jane Smith"></div><div><label>Email *</label><input type="email" placeholder="jane@email.com"></div><div class="full"><label>Phone / WhatsApp *</label><input placeholder="+1 555 000 0000"></div><div class="full"><label>Preferences</label><textarea placeholder="Passenger count, nonstop preference, airline preference, flexibility, special requests..."></textarea></div><div class="full" style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn btn--primary" type="button">Request my quote</button><a class="btn btn--ghost" href="destinations/index.html">Browse destinations</a></div></div></form></div></div><div style="display:grid;gap:16px;"><article class="media-card"><img src="assets/images/cities/london.svg" alt="London"><div class="bd"><div class="kicker">Popular premium destination</div><h2 style="font-family:Georgia,serif;font-size:40px;margin:8px 0 0">London</h2></div></article><article class="media-card"><img src="assets/images/private-hero.svg" alt="Private jet"><div class="bd"><div class="kicker">High-value travel</div><h2 style="font-family:Georgia,serif;font-size:40px;margin:8px 0 0">Private Jet Requests</h2></div></article></div></section><a class="btn btn--primary float-cta" href="/request.html">Request a quote</a></main></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Request a Quote | LuxAeris</title><link rel="stylesheet" href="assets/css/styles.css"/><link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg"/></head><body><script src="assets/js/site.js" defer></script>
+<main class="wrap" style="padding-top:24px">
+<section class="dir-hero"><div class="kicker">Private, premium, curated</div><h1 style="font-family:Georgia,serif;font-size:54px;margin:10px 0 0">Request premium flight options.</h1><p class="muted">Share the essentials and we’ll follow up with curated options aligned to your dates, cabin preference, flexibility, and pace of travel.</p></section>
+<section class="section quote-shell">
+<div class="form-card">
+<div class="form-card__hd"><div class="kicker">Step one</div><h2 style="margin-top:6px;font-family:Georgia,serif;font-size:40px">Tell us what you need.</h2></div>
+<div class="form-card__bd">
+<form id="quoteForm">
+<div class="form-grid">
+<div><label for="service">Cabin / Service *</label><select id="service" name="service"><option value="" selected disabled>Select</option><option>Business Class</option><option>First Class</option><option>Premium Economy</option><option>Private Jet Charter</option></select></div>
+<div><label for="budget">Estimated budget *</label><select id="budget" name="budget"><option value="" selected disabled>Select</option></select></div>
+<div><label for="origin">Origin *</label><input id="origin" name="origin" placeholder="New York (JFK)" autocomplete="off"></div>
+<div><label for="destination">Destination *</label><input id="destination" name="destination" placeholder="London (LHR)" autocomplete="off"></div>
+<div><label for="departure_date">Departure date *</label><input id="departure_date" name="departure_date" type="date"></div>
+<div><label for="return_date">Return date</label><input id="return_date" name="return_date" type="date"></div>
+<div><label for="full_name">Full name *</label><input id="full_name" name="full_name" placeholder="Jane Smith"></div>
+<div><label for="email">Email *</label><input id="email" name="email" type="email" placeholder="jane@email.com"></div>
+<div class="full"><label for="phone">Phone / WhatsApp *</label><input id="phone" name="phone" placeholder="+1 555 000 0000"></div>
+<div class="full"><label for="preferences">Preferences</label><textarea id="preferences" name="preferences" placeholder="Passenger count, nonstop preference, airline preference, flexibility, special requests..."></textarea></div>
+<div class="full" style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn btn--primary" type="button">Request my quote</button><a class="btn btn--ghost" href="/destinations/index.html">Browse destinations</a></div>
+</div></form></div></div>
+<div style="display:grid;gap:16px;">
+<article class="media-card"><img src="assets/images/cities/london.svg" alt="London"><div class="bd"><div class="kicker">Popular premium destination</div><h2 style="font-family:Georgia,serif;font-size:40px;margin:8px 0 0">London</h2><p class="muted">One of the most requested premium routes for business, leisure, and transatlantic travel.</p></div></article>
+<article class="media-card"><img src="assets/images/private-hero.svg" alt="Private jet"><div class="bd"><div class="kicker">High-value travel</div><h2 style="font-family:Georgia,serif;font-size:40px;margin:8px 0 0">Private Jet Requests</h2><p class="muted">For select itineraries requiring discretion, flexibility, and direct scheduling.</p></div></article>
+</div>
+<a class="btn btn--primary float-cta" href="/request.html">Request a quote</a>
+</section></main>
+<script>
+(function(){
+  const budgetEl=document.getElementById('budget');
+  const serviceEl=document.getElementById('service');
+  const originEl=document.getElementById('origin');
+  const destinationEl=document.getElementById('destination');
+  const depEl=document.getElementById('departure_date');
+  const retEl=document.getElementById('return_date');
+  const budgetOptions={
+    "Premium Economy":["Lower than $1,500","$1,500–$3,000","$3,000–$5,000","$5,000+"],
+    "Business Class":["Lower than $3,000","$3,000–$6,000","$6,000–$10,000","$10,000–$20,000","$20,000+"],
+    "First Class":["Lower than $6,000","$6,000–$12,000","$12,000–$20,000","$20,000–$40,000","$40,000+"],
+    "Private Jet Charter":["Lower than $100,000","$100,000–$200,000","$200,000–$400,000","$400,000+"]
+  };
+  function fillBudget(service){
+    if(!budgetEl) return;
+    budgetEl.innerHTML = '<option value="" selected disabled>Select</option>';
+    (budgetOptions[service] || []).forEach(v=>{
+      const opt=document.createElement('option');
+      opt.value=v; opt.textContent=v;
+      budgetEl.appendChild(opt);
+    });
+  }
+  function setDateLimits(){
+    const now=new Date();
+    const yyyy=now.getFullYear();
+    const mm=String(now.getMonth()+1).padStart(2,'0');
+    const dd=String(now.getDate()).padStart(2,'0');
+    const today=`${yyyy}-${mm}-${dd}`;
+    if(depEl) depEl.min=today;
+    if(retEl) retEl.min=today;
+    if(depEl && retEl){
+      depEl.addEventListener('change', ()=>{
+        if(depEl.value) retEl.min = depEl.value;
+        if(retEl.value && depEl.value && retEl.value < depEl.value){ retEl.value = depEl.value; }
+      });
+    }
+  }
+  function prefill(){
+    const params=new URLSearchParams(window.location.search);
+    const origin=params.get('origin');
+    const destination=params.get('destination');
+    const service=params.get('service');
+    if(origin && originEl) originEl.value = origin;
+    if(destination && destinationEl) destinationEl.value = destination;
+    if(service && serviceEl){
+      const match=[...serviceEl.options].find(o=>o.value===service);
+      if(match){ serviceEl.value = service; fillBudget(service); }
+    }
+  }
+  if(serviceEl){ serviceEl.addEventListener('change', e=>fillBudget(e.target.value)); }
+  setDateLimits();
+  prefill();
+})();
+</script></body></html>
