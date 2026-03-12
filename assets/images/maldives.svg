@@ -1,18 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
-  <defs>
-    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0%" stop-color="#0b2c45"/>
-      <stop offset="100%" stop-color="#3ca7c0"/>
-    </linearGradient>
-  </defs>
-  <rect width="1600" height="900" fill="url(#sky)"/>
-  <circle cx="1280" cy="150" r="68" fill="#f1d390"/>
-  <rect x="0" y="590" width="1600" height="310" fill="#37c3c5"/>
-  <path d="M0 650 C240 620, 360 700, 560 660 C810 610, 1020 690, 1600 620 L1600 900 L0 900 Z" fill="#0b7e88"/>
-  <ellipse cx="980" cy="610" rx="170" ry="54" fill="#f3e2a7"/>
-  <rect x="980" y="480" width="16" height="120" fill="#6b4d22"/>
-  <path d="M988 480 C940 450, 900 430, 875 390 C930 392, 968 410, 995 450 Z" fill="#0e7b55"/>
-  <path d="M988 492 C1045 450, 1095 425, 1142 400 C1108 468, 1058 496, 995 520 Z" fill="#0c8a5f"/>
-  <text x="100" y="150" font-family="Georgia,serif" font-size="86" fill="#f7f2e8">Maldives</text>
-  <text x="100" y="210" font-family="Arial,sans-serif" font-size="28" fill="#ecf7fb">Honeymoons, luxury escapes, and island retreats</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900"><defs><linearGradient id="sky" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#0b2c45"/><stop offset="100%" stop-color="#3ca7c0"/></linearGradient></defs><rect width="1600" height="900" fill="url(#sky)"/><circle cx="1280" cy="150" r="68" fill="#f1d390"/><rect x="0" y="590" width="1600" height="310" fill="#37c3c5"/><ellipse cx="980" cy="610" rx="170" ry="54" fill="#f3e2a7"/></svg>
